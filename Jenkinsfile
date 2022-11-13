@@ -27,7 +27,7 @@ pipeline {
                 echo "URL = ${SAMPLE_URL}"
                 echo "${SSH}"
                 echo "PERSON = ${PERSON}"
-                echo "PASSWORD = ${PASSWORD}"
+                sh 'mvn --version'
             }
         }
     }
