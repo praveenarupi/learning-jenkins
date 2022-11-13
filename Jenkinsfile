@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo 'Hello World'
                 echo "URL = ${SAMPLE_URL}"
+                echo "${SSH}"
             }
         }
     }
