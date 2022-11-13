@@ -34,6 +34,18 @@ pipeline {
                 sh 'mvn --version'
             }
         }
+
+        stage('Hello1') {
+            input {
+                message " should we continue?"
+                ok "YES"
+                submitter "admin"
+            }
+            steps {
+                echo " PERSON = ${PERSON}"
+            }
+        }
+
     }
     post {
       always {
