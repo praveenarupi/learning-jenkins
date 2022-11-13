@@ -55,32 +55,58 @@
 //    }
 //}
 //
+//
+//pipeline {
+//    agent any
+//
+//    parameters {
+//        choice(name: 'DEPLOY_TO', choices: ['', 'DEV', 'PROD'], description: 'Pick ENV')
+//    }
+//
+//    stages {
+//
+//        stage ('DEV') {
+//            when {
+//                environment name: 'DEPLOY_TO', value: 'DEV'
+//                //expression { COUNT > 1 }
+//                //IS_TRUE   // IS_TRUE is a boolean and condition is true if the input is true
+//            }
+//            steps {
+//                echo 'One'
+//            }
+//        }
+//
+//        stage ('PROD') {
+//            when {
+//                environment name: 'DEPLOY_TO', value: 'PROD'
+//            }
+//            steps {
+//                echo 'Two'
+//            }
+//        }
+//    }
+//}
 
 pipeline {
     agent any
 
     parameters {
-        choice(name: 'DEPLOY_TO', choices: ['', 'DEV', 'PROD'], description: 'Pick ENV')
+        booleanParam(name: 'DEPLOY', defaultValue: true, description: 'DEPLOY ?')
     }
 
     stages {
 
         stage ('DEV') {
             when {
-                environment name: 'DEPLOY_TO', value: 'DEV'
+                expression {
+                    return params.DEPLOY
+                }
+
             }
             steps {
                 echo 'One'
             }
         }
 
-        stage ('PROD') {
-            when {
-                environment name: 'DEPLOY_TO', value: 'PROD'
-            }
-            steps {
-                echo 'Two'
-            }
-        }
     }
 }
