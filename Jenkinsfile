@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        node { label 'workstation' }
+    }
 
     stages {
         stage('Hello DevOps') {
