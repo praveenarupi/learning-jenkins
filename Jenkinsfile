@@ -101,7 +101,6 @@ pipeline {
                 expression {
                     return params.DEPLOY
                 }
-
             }
             steps {
                 echo 'One'
