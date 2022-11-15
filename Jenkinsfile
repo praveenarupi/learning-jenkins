@@ -138,17 +138,16 @@ pipeline {
                     }
                 }
             }
-            stage('Two') {
-                steps {
-                    echo 'two'
-                }
+        }
+        stage('Two') {
+            steps {
+                echo 'two'
             }
-            stage('Three') {
-                steps {
-                    echo 'three'
-                }
+        }
+        stage('Three') {
+            steps {
+                echo 'three'
             }
-
         }
 
     }
